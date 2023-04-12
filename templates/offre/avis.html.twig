@@ -1,0 +1,16 @@
+{% extends 'basepage.html.twig' %}
+
+{% block title %}Avis sur Offre{% endblock %}
+{% block titre %}Avis sur Offre{% endblock %}
+{% block breadcrumbs %}Avis sur Offre{% endblock %}
+
+{% block body %}
+<div style="margin-top: 50px;" class="row">
+    <h2>Ajouter Avis</h2>
+
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_widget(form) }}
+    <button type="submit">Submit</button>
+    {{ form_end(form) }}
+            </div>
+{% endblock %}

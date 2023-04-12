@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Avis{% endblock %}
+
+{% block body %}
+    <h1>Avis</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Rate</th>
+                <td>{{ avi.rate }}</td>
+            </tr>
+            <tr>
+                <th>DescriptionAvis</th>
+                <td>{{ avi.descriptionAvis }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_avis_index') }}">back to list</a>
+{% endblock %}

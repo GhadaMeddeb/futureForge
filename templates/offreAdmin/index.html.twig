@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offres{% endblock %}
+
+{% block body %}
+    <h1>Offres</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ImageVehicule</th>
+                <th>PrenomChauff</th>
+                <th>NumChauff</th>
+                <th>DateOffre</th>
+                <th>Heure</th>
+                <th>PrixOffre</th>
+                <th>Depart</th>
+                <th>Destination</th>
+                <th>PlacesDispo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offre in offres %}
+            <tr>
+                <td>{{ offre.imageVehicule }}</td>
+                <td>{{ offre.prenomChauff }}</td>
+                <td>{{ offre.numChauff }}</td>
+                <td>{{ offre.dateOffre ? offre.dateOffre|date('Y-m-d') : '' }}</td>
+                <td>{{ offre.heure ? offre.heure|date('H:i:s') : '' }}</td>
+                <td>{{ offre.prixOffre }}</td>
+                <td>{{ offre.depart }}</td>
+                <td>{{ offre.destination }}</td>
+                <td>{{ offre.placesDispo }}</td>
+                <td>
+                    <a href="{{ path('admin_offre_show', {'idOffre': offre.idOffre}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

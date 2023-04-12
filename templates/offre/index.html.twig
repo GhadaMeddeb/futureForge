@@ -1,0 +1,42 @@
+{% extends 'basepage.html.twig' %}
+
+{% block title %}Offres de Cov{% endblock %}
+{% block titre %}Offres de Cov{% endblock %}
+{% block breadcrumbs %}Offres de Cov{% endblock %}
+
+{% block body %}
+
+<a style="border: 1px solid #01d28e; padding: 10px;" href="{{ path('app_offre_new') }}">Ajout Offre de Cov</a>
+    		<div style="margin-top: 50px;" class="row">
+        {% for offre in offres %}
+    			<div class="col-md-4">
+    				<div class="car-wrap rounded ftco-animate">
+    					<img class="img rounded d-flex align-items-end" src="{{ asset('uploads/' ~ offre.imageVehicule) }}" />
+    					</div>
+    					<div class="text">
+    						<h2 class="mb-0"><a href="car-single.html">{{ offre.prenomChauff }}</a></h2>
+    						<div class="d-flex mb-3" style="display: flex;">
+                            <div style="margin-left: 0; margin-right: auto;">
+	    						<span style="margin-left: 0; margin-right: auto;" class="cat">{{ offre.numChauff }}</span>
+	    						<span class="cat">{{ offre.placesDispo }}</span>
+                            </div>
+                            <div style="margin-right: 0; margin-left: auto;">
+	    						<p class="price ml-auto">{{ offre.prixOffre }} TND</p>
+	    						<p class="price ml-auto">{{ offre.dateOffre ? offre.dateOffre|date('Y-m-d') : '' }} - {{ offre.heure ? offre.heure|date('H:i:s') : '' }}</p>
+	    						<p class="price ml-auto">{{ offre.depart }} -> {{ offre.destination }}</p>
+                            </div>
+    						</div>
+    						<p class="d-flex mb-0 d-block"><a href="{{ path('app_offre_edit', {'idOffre': offre.idOffre}) }}" class="btn btn-primary py-2 mr-1">Edit</a>
+							 <a href="{{ path('app_offre_avis', {'idOffre': offre.idOffre}) }}" class="btn btn-primary py-2 ml-1">Avis</a>
+							 <a href="{{ path('app_offre_show', {'idOffre': offre.idOffre}) }}" class="btn btn-secondary py-2 ml-1">Details</a>
+							 </p>
+    					</div>
+    				</div>
+    			</div>
+        {% else %}
+    			<div class="col-md-4">
+                <p>no records found</p>
+    			</div>
+        {% endfor %}
+    		</div>
+{% endblock %}
